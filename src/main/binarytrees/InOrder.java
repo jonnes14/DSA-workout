@@ -23,8 +23,9 @@ public class InOrder {
         if(root ==null){
             return 0;
         }
+
         return 1+count(root.left)+count(root.right);
-    }
+    } //for counting purpose
 
     public static void main(String[] args) {
         Nod root=new Nod(1);
