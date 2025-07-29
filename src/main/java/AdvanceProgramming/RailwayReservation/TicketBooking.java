@@ -27,7 +27,11 @@ public class TicketBooking {
                     String berthpreference=s.nextLine();
                     r.BookTicket(name,age,gender,berthpreference);
                     break;
-
+                case 2:
+                    System.out.println("Enter ticket id to cancel");
+                    int ticketid =s.nextInt();
+                    r.cancelTicket(ticketid);
+                    break;
             }
         }
 

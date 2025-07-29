@@ -11,10 +11,12 @@ public class RailwayCode {
     private final List<Integer> upper=new ArrayList<>();
     private final List<Integer> middle=new ArrayList<>();
     private final List<Integer> sidelower=new ArrayList<>();
+    private int ticketcounter=0;
     public void BookTicket(String name, int age,String gender,String berthPreference) {
         Passenger passenger;
+        String ticketid= "T"+ticketcounter++;
         if(!seatbirth.isEmpty()) {
-            passenger=new Passenger(name, age,gender,berthPreference);
+            passenger=new Passenger(name, age,gender,berthPreference,ticketid);
             conformedpassenger.add(passenger);
         }
 
@@ -43,8 +45,16 @@ public class RailwayCode {
         for(int i=0;i<21;i++) lower.add(i);
         for(int i=0;i<9;i++) sidelower.add(i);
     }
-    public void cancelTicket(){
+    public void cancelTicket(int inputid, String name){
+       for(Passenger p:conformedpassenger){
+           if(p.getTicketid().equals(inputid)){
+               conformedpassenger.remove(p);
+               System.out.println("Passenger"+name+"ticketid"+inputid+"is cancelled");
+           }
+       }
+        if(!rac.isEmpty()){
 
+        }
     }
 
 }
