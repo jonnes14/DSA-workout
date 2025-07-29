@@ -46,14 +46,19 @@ public class RailwayCode {
         for(int i=0;i<9;i++) sidelower.add(i);
     }
     public void cancelTicket(int inputid, String name){
+        Passenger tocancel=null;
        for(Passenger p:conformedpassenger){
-           if(p.getTicketid().equals(inputid)){
-               conformedpassenger.remove(p);
-               System.out.println("Passenger"+name+"ticketid"+inputid+"is cancelled");
+           if(p.getTicketid().equals(inputid)) {
+               tocancel = p;
            }
        }
-        if(!rac.isEmpty()){
+        conformedpassenger.remove(tocancel);
+       String berth=tocancel.getBerthPreference();
 
+        System.out.println("Passenger"+name+"ticketid"+inputid+"is cancelled");
+        if(!rac.isEmpty()){
+            Passenger racpassenger=rac.poll();
+            racpassenger.setBerthPreference(berth);
         }
     }
 

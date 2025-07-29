@@ -18,6 +18,13 @@ public class Passenger {
     public String getTicketid(){
           return ticketid;
     }
+    public String getBerthPreference() {
+        return berthPreference;
+    }
+
+    public void setBerthPreference(String berthPreference) {
+        this.berthPreference = berthPreference;
+    }
 
     @Override
     public String toString() {
