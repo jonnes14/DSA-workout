@@ -9,7 +9,7 @@ public class Passenger {
     List<String> seatbirth= Arrays.asList("L","M","U");
 
     public void BookTicket(Passenger passenger) {
-
+        System.out.printl()
     }
     public String AllocateBirth(String name,int age, String gender) {
         if(age>60 && gender.equalsIgnoreCase("female") ) {
