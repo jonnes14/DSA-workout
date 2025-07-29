@@ -1,24 +1,31 @@
 package AdvanceProgramming.RailwayReservation;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Passenger {
-    List<Integer> booking=new ArrayList<Integer>();
-    List<String> seatbirth= Arrays.asList("L","M","U");
+    private final List<Integer> booking=new ArrayList<Integer>();
+    private final List<String> seatbirth=Arrays.asList("L","M","U","SL");
+    private final List<String> details=new ArrayList<String>();
+    private final Queue<Integer> rac=new LinkedList<Integer>();
 
     public void BookTicket(Passenger passenger) {
-        System.out.printl()
-    }
-    public String AllocateBirth(String name,int age, String gender) {
-        if(age>60 && gender.equalsIgnoreCase("female") ) {
-            seatbirth.get(0);
-        }
-        if(age<5) {
-            return "ags is less than 5 no seat allocated";
-        }
-        return name;
 
     }
+    public String AllocateBirth(String name,int age, String preference, String gender, boolean hasChild, boolean israc) {
+        if(age<5) {
+            details.add(name+","+age+","+gender);
+            return "age is less than 5 no seat allocated";
+        }
+        if((age>60 || (gender.equalsIgnoreCase("female")&&hasChild)) &&seatbirth.contains("L")) {
+            return "L";
+        }
+        if(seatbirth.contains(preference)) {
+            return preference;
+        }
+        if(israc) {
+            if(seatbirth.contains("SL")) {
+                seatbirth.remove("SL");
+            }
+        }
+        return seatbirth.get(0);
 }
