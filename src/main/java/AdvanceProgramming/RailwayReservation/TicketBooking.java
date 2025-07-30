@@ -25,7 +25,7 @@ public class TicketBooking {
                     String gender=s.nextLine();
                     System.out.println("Enter Berth preference (L/U/M)");
                     String berthpreference=s.nextLine();
-                    r.BookTicket(name,age,gender,berthpreference);
+                    r.BookTicket(name,age,gender,berthpreference,true);
                     break;
                 case 2:
                     System.out.println("Enter ticket id to cancel");
