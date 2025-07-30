@@ -4,7 +4,6 @@ import java.util.*;
 
 public class RailwayCode {
     private final List<String> booking=new ArrayList<String>();
-    private final List<String> seatbirth= new  ArrayList<>(Arrays.asList("L","M","U","SL"));
     private final List<Passenger> conformedpassenger=new ArrayList<>();
     private final Queue<Passenger> rac=new LinkedList<>();
     private final Queue<Passenger> wait=new LinkedList<>();
@@ -21,27 +20,43 @@ public class RailwayCode {
             System.out.println( "age is less than 5 no seat allocated");
             return;
         }
-        if(!seatbirth.isEmpty()) {
+        if(!lower.isEmpty()) {
+             int berthnumber =lower.remove(0);
             passenger=new Passenger(name, age,gender,berthPreference,ticketid);
+            passenger.setBerthPreference("L"+berthnumber);
             conformedpassenger.add(passenger);
-            seatbirth.remove(berthPreference);
         }
-        else if(!rac.isEmpty()){
+        else if(!middle.isEmpty()) {
+            int berthnumber =middle.remove(0);
+            passenger=new Passenger(name, age,gender,berthPreference,ticketid);
+            passenger.setBerthPreference("M"+berthnumber);
+            conformedpassenger.add(passenger);
+        }
+        if(!upper.isEmpty()) {
+            int berthnumber =upper.remove(0);
+            passenger=new Passenger(name, age,gender,berthPreference,ticketid);
+            passenger.setBerthPreference("U"+berthnumber);
+            conformedpassenger.add(passenger);
+        }
+        else {
             passenger =new Passenger(name,age,gender,berthPreference,ticketid);
-            rac.add(passenger);
+            rac.offer(passenger);
+            System.out.println("your ticket id"+passenger.getTicketid()+"moved to RAC");
         }
 
     }
     public String BirthCondition(String name,int age, String preference, String gender, boolean hasChild, boolean israc) {
 
-        if((age>60 || (gender.equalsIgnoreCase("female")&&hasChild)) &&seatbirth.contains("L")) {
-            return "L";
+        if((age>60 || (gender.equalsIgnoreCase("female")&&hasChild)) ) {
+            if(!lower.isEmpty()) {
+                return "L";
+            }
         }
-        if(seatbirth.contains(preference)) {
+        if(!upper.isEmpty() || !lower.isEmpty() || !middle.isEmpty()) {
             return preference;
         }
         if(israc) {
-            if(seatbirth.contains("SL")) {
+            if(!sidelower.isEmpty()) {
                 seatbirth.remove("SL");
             }
         }
