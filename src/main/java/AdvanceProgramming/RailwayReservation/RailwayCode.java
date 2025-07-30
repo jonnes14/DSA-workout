@@ -7,6 +7,7 @@ public class RailwayCode {
     private final List<String> seatbirth= new  ArrayList<>(Arrays.asList("L","M","U","SL"));
     private final List<Passenger> conformedpassenger=new ArrayList<>();
     private final Queue<Passenger> rac=new LinkedList<>();
+    private final Queue<Passenger> wait=new LinkedList<>();
     private final List<Integer> lower=new ArrayList<>();
     private final List<Integer> upper=new ArrayList<>();
     private final List<Integer> middle=new ArrayList<>();
@@ -45,20 +46,28 @@ public class RailwayCode {
         for(int i=0;i<21;i++) lower.add(i);
         for(int i=0;i<9;i++) sidelower.add(i);
     }
-    public void cancelTicket(int inputid, String name){
+    public void cancelTicket(int inputid){
         Passenger tocancel=null;
        for(Passenger p:conformedpassenger){
            if(p.getTicketid().equals(inputid)) {
                tocancel = p;
            }
        }
-        conformedpassenger.remove(tocancel);
+       conformedpassenger.remove(tocancel);
        String berth=tocancel.getBerthPreference();
 
-        System.out.println("Passenger"+name+"ticketid"+inputid+"is cancelled");
+        System.out.println("ticketid"+inputid+"is cancelled");
         if(!rac.isEmpty()){
             Passenger racpassenger=rac.poll();
             racpassenger.setBerthPreference(berth);
+            conformedpassenger.add(racpassenger);
+            System.out.println("Rac passenger"+racpassenger.getName()+" moved to"+berth);
+        }
+        if(!wait.isEmpty()){
+            Passenger waitpassenger=wait.poll();
+            rac.offer(waitpassenger);
+            waitpassenger.setBerthPreference("RAC");
+            System.out.println("Wait passenger"+waitpassenger.getName()+" moved to rac list");
         }
     }
 

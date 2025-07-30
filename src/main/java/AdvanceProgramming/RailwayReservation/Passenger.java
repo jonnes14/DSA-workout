@@ -22,6 +22,14 @@ public class Passenger {
         return berthPreference;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setBerthPreference(String berthPreference) {
         this.berthPreference = berthPreference;
     }
