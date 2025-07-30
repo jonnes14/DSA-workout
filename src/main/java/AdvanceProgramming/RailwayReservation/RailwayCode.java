@@ -64,7 +64,7 @@
             }
             if(preference.equalsIgnoreCase("L")&&!lower.isEmpty()) return "L";
             if(preference.equalsIgnoreCase("M")&&!middle.isEmpty()) return "M";
-            if(preference.equalsIgnoreCase("U")&&!lower.isEmpty()) return "U";
+            if(preference.equalsIgnoreCase("U")&&!upper.isEmpty()) return "U";
                 if(!sidelower.isEmpty()) {
                     sidelower.remove("SL");
                     return "SL";
@@ -115,6 +115,10 @@
             }
     }
     public void availabletickets(){
+                int total=lower.size()+upper.size()+middle.size();
+                System.out.println("Available tickets"+total);
+                System.out.println("Available RAC"+(9-rac.size()));
+                System.out.println("Available waiting"+(10-wait.size()));
 
     }
 

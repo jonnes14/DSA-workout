@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class TicketBooking {
     public static void main(String[] args) {
         RailwayCode r=new RailwayCode();
+        r.tickets();
         Scanner s =new Scanner(System.in);
         while(true) {
             System.out.println("Railway Reservation");
@@ -15,6 +16,7 @@ public class TicketBooking {
             System.out.println("Enter 5 for Exit");
             System.out.println("Enter your choice");
             int choice=s.nextInt();
+            s.nextLine();
             switch (choice) {
                 case 1:
                     System.out.println("Enter name");
@@ -34,7 +36,17 @@ public class TicketBooking {
                     break;
                 case 3:
                     System.out.println("Booking details");
-
+                    r.printBookingDetails();
+                    break;
+                case 4:
+                    System.out.println("Available tickets");
+                    r.availabletickets();
+                    break;
+                case 5:
+                    System.out.println("exiting..");
+                    System.exit(0);
+                default:
+                    System.out.println("invalid choice");
             }
         }
 
