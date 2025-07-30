@@ -29,9 +29,12 @@ public class TicketBooking {
                     break;
                 case 2:
                     System.out.println("Enter ticket id to cancel");
-                    int ticketid =s.nextInt();
+                    String ticketid=s.nextLine();
                     r.cancelTicket(ticketid);
                     break;
+                case 3:
+                    System.out.println("Booking details");
+
             }
         }
 
