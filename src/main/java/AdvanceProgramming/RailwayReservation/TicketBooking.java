@@ -23,6 +23,7 @@ public class TicketBooking {
                     String name=s.nextLine();
                     System.out.println("Enter age");
                     int age=s.nextInt();
+                    s.nextLine();
                     System.out.println("Enter Gender");
                     String gender=s.nextLine();
                     System.out.println("Enter Berth preference (L/U/M)");
